@@ -1,0 +1,41 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<!--wrapping the output in list as we get the dat ain list format form sql databaese-->
+@model List<StudentPortal.Models.Entities.Student>
+
+
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Student Details</h2>
+    <table class="table table-striped table-bordered">
+        <thead class="thead-dark">
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Phone</th>
+                <th>Email</th>
+                <th>IsSubscribed</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var student in Model)
+            {
+                <tr>
+                <td>@student.Id</td>
+                <td>@student.Name</td>
+                <td>@student.Phone</td>
+                <td>@student.Email</td>
+                <td>@student.Subscribed</td>
+                <td>
+                    <a class ="btn btn-primary" asp-controller="Students" asp-action="UpdateList" asp-route-id="@student.Id">Edit</a>
+
+                </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
